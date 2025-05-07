@@ -63,11 +63,11 @@ def home(request):
         'categories': categories,
         
     }
-    # return render(request, 'home.html',context)
-    if is_mobile(request):
-        return render(request, 'mobile/home.html')
-    else:
-        return render(request, 'home.html',context)
+    return render(request, 'home.html',context)
+    # if is_mobile(request):
+    #     return render(request, 'mobile/home.html')
+    # else:
+    #     return render(request, 'home.html',context)
 
 
 def login_attempt(request):
