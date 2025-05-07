@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: agronepal
+    env: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn UserAuth.wsgi:application"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.0
+      - key: SECRET_KEY
+        generateValue: true
+      - key: WEB_CONCURRENCY
+        value: 4
+      - key: STATIC_ROOT
+        value: /opt/render/project/src/staticfiles
+      - key: STATIC_URL
+        value: /static/ 

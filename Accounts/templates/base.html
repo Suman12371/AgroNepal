@@ -352,7 +352,7 @@
                         {% if cart_count %}
                         <span class="absolute -top-1 -right-1 bg-red-500 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
                             {{ cart_count }}
-                        </span>
+                    </span>
                         {% endif %}
                     </a>
                     {% if user.is_authenticated %}
@@ -562,11 +562,11 @@
             <a href="/cart" class="flex flex-col items-center p-2 relative {% if request.resolver_match.url_name == 'cart_view' %}text-accent{% endif %}">
                 <i class="fas fa-shopping-cart text-lg"></i>
                 <span class="text-xs mt-1">Cart</span>
-                {% if cart_count %}
+                            {% if cart_count %}
                 <span class="absolute top-1 right-4 bg-red-500 text-white rounded-full text-xs w-4 h-4 flex items-center justify-center">
-                    {{ cart_count }}
-                </span>
-                {% endif %}
+                                {{ cart_count }}
+                            </span>
+                            {% endif %}
             </a>
         </div>
     </nav>
@@ -584,7 +584,7 @@
                 <div>
                     <h3 class="text-lg font-bold mb-4">Agro Nepal</h3>
                     <p class="text-gray-400 text-sm">Your trusted partner in agricultural solutions.</p>
-                </div>
+    </div>
 
                 <!-- Quick Links -->
                 <div>
@@ -594,8 +594,8 @@
                         <li><a href="/product" class="text-gray-400 hover:text-accent">Shop</a></li>
                         <li><a href="/categories" class="text-gray-400 hover:text-accent">Categories</a></li>
                     </ul>
-                </div>
-
+            </div>
+            
                 <!-- Contact -->
                 <div>
                     <h3 class="text-lg font-bold mb-4">Contact</h3>
@@ -603,8 +603,8 @@
                         <li>Kathmandu, Nepal</li>
                         <li>info@agronepal.com</li>
                     </ul>
-                </div>
-
+                                </div>
+                                
                 <!-- Social Links -->
                 <div>
                     <h3 class="text-lg font-bold mb-4">Follow Us</h3>
@@ -612,15 +612,15 @@
                         <a href="#" class="text-gray-400 hover:text-accent"><i class="fab fa-facebook"></i></a>
                         <a href="#" class="text-gray-400 hover:text-accent"><i class="fab fa-instagram"></i></a>
                         <a href="#" class="text-gray-400 hover:text-accent"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
-            </div>
-
+                                    </div>
+                                </div>
+                            </div>
+                       
             <!-- Copyright -->
             <div class="mt-8 pt-8 border-t border-gray-800 text-center text-sm text-gray-400">
                 <p>&copy; 2024 Agro Nepal. All rights reserved.</p>
-            </div>
-        </div>
+                    </div>
+                        </div>
     </footer>
 
     {% block scripts %}
@@ -640,40 +640,40 @@
         // Close mobile menu when clicking outside
         document.addEventListener('click', (e) => {
             if (!menuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
-                mobileMenu.classList.add('hidden');
+                        mobileMenu.classList.add('hidden');
             }
         });
-        
-        if (cartLink && cartDropdown) {
+            
+            if (cartLink && cartDropdown) {
             cartLink.addEventListener('click', (e) => {
                 if (window.innerWidth > 1024) {
-                    e.preventDefault();
+                        e.preventDefault();
                     cartDropdown.classList.toggle('hidden');
                 }
             });
 
             document.addEventListener('click', (e) => {
                 if (!cartLink.contains(e.target) && !cartDropdown.contains(e.target)) {
-                    cartDropdown.classList.add('hidden');
-                }
-            });
-        }
+                        cartDropdown.classList.add('hidden');
+                    }
+                });
+            }
 
         // Notification dropdown functionality
-        const notificationLink = document.getElementById('notification-link');
-        const notificationDropdown = document.getElementById('notification-dropdown');
-        
-        if (notificationLink && notificationDropdown) {
+            const notificationLink = document.getElementById('notification-link');
+            const notificationDropdown = document.getElementById('notification-dropdown');
+            
+            if (notificationLink && notificationDropdown) {
             notificationLink.addEventListener('click', (e) => {
                 if (window.innerWidth > 1024) {
-                    e.preventDefault();
+                        e.preventDefault();
                     notificationDropdown.classList.toggle('hidden');
                 }
             });
 
             document.addEventListener('click', (e) => {
                 if (!notificationLink.contains(e.target) && !notificationDropdown.contains(e.target)) {
-                    notificationDropdown.classList.add('hidden');
+                        notificationDropdown.classList.add('hidden');
                 }
             });
         }
