@@ -9,9 +9,6 @@ load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Define the MEDIA_URL and MEDIA_ROOT
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 # Quick-start development settings - unsuitable for production
@@ -21,7 +18,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 SECRET_KEY = os.getenv('SECRET_KEY', 'your-secret-key-here')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 # python manage.py runserver 192.168.19.225:8000
@@ -144,13 +141,14 @@ USE_TZ = True
 #     os.path.join(BASE_DIR, 'staticfiles'),
 # ]
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / 'static']  # optional, for dev static files
+STATIC_ROOT = BASE_DIR / 'staticfiles_build'
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'staticfiles'),  # where your actual static files live
-]
+# Define the MEDIA_URL and MEDIA_ROOT
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build')
 
 
 # Default primary key field type
