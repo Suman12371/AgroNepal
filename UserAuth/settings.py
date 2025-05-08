@@ -3,6 +3,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 from django.contrib.messages import constants as messages
 import dj_database_url
+import django_heroku
 # Load environment variables
 load_dotenv()
 
@@ -18,7 +19,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY', 'your-secret-key-here')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = 'RENDER' not in os.environ
 
 ALLOWED_HOSTS = ['*']
 # python manage.py runserver 192.168.19.225:8000
@@ -53,6 +54,7 @@ INSTALLED_APPS = [
 
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -94,12 +96,11 @@ WSGI_APPLICATION = 'UserAuth.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default=os.environ.get('DATABASE_URL'),
-        conn_max_age=600
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -207,6 +208,9 @@ SOCIALACCOUNT_PROVIDERS = {
 }
 
 SOCIALACCOUNT_LOGIN_ON_GET=True 
+
+
+django_heroku.settings(locals())
 
 # Referral reward amount (points)
 REFERRAL_REWARD = 100
