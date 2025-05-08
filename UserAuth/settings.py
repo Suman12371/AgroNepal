@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 from django.contrib.messages import constants as messages
-
+import dj_database_url
 # Load environment variables
 load_dotenv()
 
@@ -94,10 +94,10 @@ WSGI_APPLICATION = 'UserAuth.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(
+        default=os.environ.get('DATABASE_URL'),
+        conn_max_age=600
+    )
 }
 
 
@@ -143,7 +143,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']  # optional, for dev static files
-STATIC_ROOT = BASE_DIR / 'staticfiles_build'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Define the MEDIA_URL and MEDIA_ROOT
 MEDIA_URL = '/media/'
