@@ -19,12 +19,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY', 'your-secret-key-here')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'RENDER' not in os.environ
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 # python manage.py runserver 192.168.19.225:8000
 
-SITE_ID = 9
+SITE_ID = 1
 
 
 # Application definition
@@ -214,3 +214,5 @@ django_heroku.settings(locals())
 
 # Referral reward amount (points)
 REFERRAL_REWARD = 100
+
+CSRF_TRUSTED_ORIGINS = ['https://Accounts.onrender.com']
