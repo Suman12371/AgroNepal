@@ -216,3 +216,7 @@ django_heroku.settings(locals())
 REFERRAL_REWARD = 100
 
 CSRF_TRUSTED_ORIGINS = ['https://Accounts.onrender.com']
+
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ['GOOGLE_CLIENT_ID']
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ['GOOGLE_SECRET']
