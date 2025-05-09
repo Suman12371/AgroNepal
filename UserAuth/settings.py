@@ -19,12 +19,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY', 'your-secret-key-here')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = 'RENDER' not in os.environ
 
 ALLOWED_HOSTS = ['*']
 # python manage.py runserver 192.168.19.225:8000
 
-SITE_ID = 1
+SITE_ID = 11
 
 
 # Application definition
@@ -95,10 +95,21 @@ WSGI_APPLICATION = 'UserAuth.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'agro nepal',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': 'localhost',  # Or your database host
+        'PORT': '3306',        # Default MySQL port
     }
 }
 
@@ -214,9 +225,3 @@ django_heroku.settings(locals())
 
 # Referral reward amount (points)
 REFERRAL_REWARD = 100
-
-CSRF_TRUSTED_ORIGINS = ['https://Accounts.onrender.com']
-
-
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ['GOOGLE_CLIENT_ID']
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ['GOOGLE_SECRET']
